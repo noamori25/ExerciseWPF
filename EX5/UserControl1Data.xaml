@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="EX5.UserControl1Data"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EX5"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type local:EnumStatus}" x:Key="GetEnumValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:EnumStatus"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    <Grid  Margin="10">
+        <DataGrid x:Name="datagrid" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="FirstName" Binding="{Binding FirstName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="FirstName" Binding="{Binding FirstName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="LastName" Binding="{Binding LastName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Birthday" Binding="{Binding Age}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Email">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Birthday}" BorderThickness="0" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="VIP">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding VIP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="OrderValue" Binding="{Binding Sum}"></DataGridTextColumn>
+                <DataGridComboBoxColumn Header="Status" ItemsSource="{Binding Source={StaticResource GetEnumValues}}"
+                                        SelectedValueBinding="{Binding Status}"  />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

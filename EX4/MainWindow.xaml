@@ -1,0 +1,15 @@
+﻿<Window x:Class="EX4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EX4"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+        <StackPanel Orientation="Vertical">
+                <local:UserControl1 x:Name="c1" NumberInSlider="30" Title="Volume" MaximumNumber="60"/>
+                <local:UserControl1 x:Name="c2"  NumberInSlider="50" Title="Bass" MaximumNumber="100"/>
+                <local:UserControl1 x:Name="c3" NumberInSlider="10" Title="Amplify" MaximumNumber="200"/>
+        <Label Height="30" Width="60" Content="{Binding Ave,UpdateSourceTrigger=PropertyChanged}"/>
+    </StackPanel>
+</Window>
